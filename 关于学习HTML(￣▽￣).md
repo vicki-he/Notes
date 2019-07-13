@@ -2,15 +2,15 @@
 
 ## 链接
 
-通过<!--<a>-->标签定义 (在<!--<body>-->中)
+通过a>标签定义 (在body>中)
 
-eg：<!--<a href = "http://www.baidu.com">  click here to goto baidu!</a>-->
+eg：a href = "http://www.baidu.com">  click here to goto baidu!</a
 
 ## 图像
 
-通过<!--<img>-->标签定义（在<!--<body>-->中）
+通过img>标签定义（在body>中）
 
-eg：<!--<img src = "haha.jpg" width = "200" height = "200" />-->
+eg：img src = "haha.jpg" width = "200" height = "200" />
 
 ## HTML元素
 
@@ -18,7 +18,7 @@ eg：<!--<img src = "haha.jpg" width = "200" height = "200" />-->
 
 某些HTML元素具有空内容（empty content）空元素在开始标签中进行关闭
 
-<!--<br>-->就是没有关闭标签的空元素，定义换行
+br>就是没有关闭标签的空元素，定义换行
 
 在开始标签中加斜杠，关闭空元素 eg：<  XXX      />
 
