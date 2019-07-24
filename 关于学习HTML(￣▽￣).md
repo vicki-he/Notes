@@ -272,3 +272,187 @@ HTML不能使用大于号和小于号，会被浏览器误认为它们是标签�
 
 不间断空格（不会被浏览器忽略的空格）`&nbsp;`。
 
+## HTML表单
+
+用于收集用户输入，由`<form>`定义
+
+1. 所包含的表单元素：指的是不同类型的input元素/复选框/单选按钮/提交按钮等。
+
+   - input元素
+
+     | 类型（Type） | 描述                       |
+     | ------------ | -------------------------- |
+     | text         | 定义常规文本输入           |
+     | radio        | 定义单选按钮输入（多选一） |
+     | submit       | 定义提交按钮（提交表单）   |
+
+     - 文本输入 `<input type="text">`定义用于文本输入的单行输入字段
+
+     - 单选按钮输入`<input type="radio">`定义单选按钮
+
+     - 提交按钮`<input type="submit">`定义用于向表单处理程序提交表单的按钮
+
+       （表单处理程序通常是包含用来处理输入数据的脚本的服务器页面，在表单的action属性中指定。）
+
+   - Action属性
+
+     `<form action="action_page.php">`
+
+     定义在提交表单时执行的动作，向服务器提交表单的通常做法是使用提交按钮，通常，表单会被提交到web服务器上的网页。
+
+   - Method属性
+
+     method属性规定在提交表单时所用的HTTP方法（GET or POST）
+
+     `<form action="action_page.php" method="GET">`或者`<form action="action_page.php" method="POST">`
+
+     使用GET时，表单数据在页面地址栏中是可见的，使用POST数据不可见故安全性更好。
+
+   - Name属性
+
+     如果要正确的被提交，每个输入字段必须设置一个name属性。
+
+     `<input type="text" name="lastname" value="Mouse">`
+
+   - `<fieldset>`组合表单数据
+
+     `<fieldset>`元素组合表单中的相关数据，`<legend>`元素为`<fieldset>`元素定义标题。
+
+     eg：
+
+     ```html
+     <form action="action_page.php">
+         <fieldset>
+             <legend>
+                 Personal information:
+             </legend>
+             First name:<br>
+             <input type="text" name="firstname" value="Mickey">
+             <br>
+             Last name:<br>
+             <input ytpe="text" name="lastname" value="Mouse">
+             <br><br>
+             <input type="submit" value="Submit">
+         </fieldset>
+     </form>
+     ```
+
+`<form>`属性的列表
+
+| 属性           | 描述                                                  |
+| -------------- | ----------------------------------------------------- |
+| accept-charset | 规定在被提交表单中使用的字符集   默认：页面字符集     |
+| action         | 规定向何处提交表单的地址   提交页面                   |
+| autocomplete   | 规定浏览器应该自动完成表单   默认：开启               |
+| enctype        | 规定被提交数据的编码   默认：url-encoded              |
+| method         | 规定在提交表单时所用的HTTP方法   默认：GET            |
+| name           | 规定识别表单的名称   对于DOM使用：document.forms.name |
+| novalidate     | 规定浏览器不验证表单                                  |
+| targey         | 规定action属性中地址的目标   默认：_self              |
+
+#### 表单元素
+
+1. `<input>`
+
+2. `<select>`（下拉列表）
+
+   ```html
+   <select name="cars">
+       <option value="volvo">Volvo</option>
+       <option value="saab">Saab</option>
+       <option value="fiat">Fiat</option>
+       <option value="audi">Audi</option>
+   </select>
+   ```
+
+   `<option>`元素定义待选择的选项，列表通常会把首个选项显示为备选选项，可以通过selected属性预选某些选项   `<option value="audi" selected>Audi</option>`
+
+3. `<textarea>`定义多行输入字段（文本域）
+
+   ```html
+   <textarea name="message" rows="10" cols="30">
+       The cat was playing in the garden.
+   </textarea>
+   ```
+
+4. `<button>`定义可点击按钮
+
+   ```html
+   <button type="button" onclick="alert('Hello World!')">
+       Click Me!
+   </button>
+   ```
+
+### 输入类型
+
+1. text
+
+2. password`<input type="password">`会被做掩码处理
+
+3. checkbox复选框
+
+   ```html
+   <form>
+       <input type="checkbox" name="vehicle" value="Bike">I have a bike.<br>
+       <input type="checkbox" name="vehicle" value="Car">I have a car.<br>
+   </form>
+   ```
+
+4. number`<input type="number">`用于应该包含数值的输入字段，能够对数字做出限制
+
+5. date`<input type="date">`用于应该包含日期的输入字段。
+
+   ```html
+   <form>
+       Birthday:
+       <input type="date" name="bday">
+   </form>
+   ```
+
+6. color用于应该包含颜色的输入字段
+
+7. range用于应该包含一定范围内的值的输入字段
+
+8. month允许用户选择月份和年份
+
+9. week允许用户选择周和年
+
+10. time允许用户选择时间（无时区）
+
+11. datetime允许用户选择日期和时间（有时区）
+
+12. datetime-local允许用户选择日期和时间（无时区）
+
+13. email用于应该包含电子邮件地址的输入字段
+
+14. search用于搜索字段（搜索字段的表现类似常规文本字段）
+
+15. tel用于应该包含电话号码的输入字段
+
+16. url用于应该包含URL地址的输入字段
+
+### 输入属性
+
+1. value属性规定输入字段的初始值
+2. readonly属性规定输入字段为只读（不需要值，等同于readonly="readonly"）
+3. disabled属性规定输入字段是禁用的（不需要值；被禁用元素不可点不可用不会被提交）
+4. size属性规定输入字段的尺寸（以字符计）
+5. maxlength属性规定输入字段允许的最大长度（不会有反馈，如果需要提醒用户，需要编写JS代码）
+6. html5新增属性
+   - autocomplete属性规定表单或输入字段是否应该自动完成（on或off）
+   - novalidate属性规定在提交表单时不对表单数据进行验证
+   - autofocus属性为布尔属性，规定当页面加载时`<input>`元素应该自动获得焦点
+   - form属性规定`<input>`元素所属的一个或多个表单（如需引用一个以上的表单，使用空格分隔的表单id列表）
+   - formaction属性规定当提交表单时处理该控件的文件的URL，覆盖`<form>`元素的action属性，适用于type=“submit”以及type=“image”
+   - formenctype属性规定当把表单数据提交至服务器时对其进行编码（仅POST表单），覆盖`<form>`元素的enctype属性，适用于type=“submit”和type=“image”
+   - formmethod属性定义用以向action URL发送表单数据的HTTP方法，覆盖`<form>`元素的method属性，适用于submit和image
+   - formnovalidate布尔属性，规定在提交表单时不对`<input>`元素进行验证，覆盖`<form>`的novalidate属性，可用于submit
+   - formtarget属性规定的名称或关键词指示提交表单后在何处显示接受到的相应，覆盖`<form>`的target，适用于submit和image
+   - height和width属性，规定input元素高度和宽度，仅适用于image
+   - list属性引用的`<datelist>`元素中包含了`<input>`元素的预定义选项
+   - min和max规定input元素的最小值和最大值
+   - multiple属性布尔属性，规定允许用户在input元素中输入一个以上的值，适用于email和file
+   - pattern属性规定用于检查input元素的正则表达式   PS:使用全局的title属性对模式进行描述以帮助用户
+   - placeholder属性规定用以描述输入字段预期值的提示（样本值或有关格式的简短描述），该提示会在用户输入值显示在输入字段中
+   - required属性布尔属性，规定在提交表单之前必须填写输入字段
+   - step属性规定input元素的合法数字间隔，eg：如果step=“3”，则合法数字应该是-3、0、0、6等。
