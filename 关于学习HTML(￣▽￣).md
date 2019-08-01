@@ -239,6 +239,7 @@ eg：
 
 ```html
 <iframe src="URL"></iframe>
+
 ```
 
 URL指向隔离页面的位置
@@ -250,6 +251,7 @@ eg：
 ```html
 <iframe src="demo_iframe.htm" name="iframe_a"></iframe>
 <p><a href="http://www.baidu.com" target="iframe_a">百度</a></p>
+
 ```
 
 点击百度链接，网页会在iframe框架显示。
@@ -335,6 +337,7 @@ HTML不能使用大于号和小于号，会被浏览器误认为它们是标签�
              <input type="submit" value="Submit">
          </fieldset>
      </form>
+     
      ```
 
 `<form>`属性的列表
@@ -363,6 +366,7 @@ HTML不能使用大于号和小于号，会被浏览器误认为它们是标签�
        <option value="fiat">Fiat</option>
        <option value="audi">Audi</option>
    </select>
+   
    ```
 
    `<option>`元素定义待选择的选项，列表通常会把首个选项显示为备选选项，可以通过selected属性预选某些选项   `<option value="audi" selected>Audi</option>`
@@ -373,6 +377,7 @@ HTML不能使用大于号和小于号，会被浏览器误认为它们是标签�
    <textarea name="message" rows="10" cols="30">
        The cat was playing in the garden.
    </textarea>
+   
    ```
 
 4. `<button>`定义可点击按钮
@@ -381,6 +386,7 @@ HTML不能使用大于号和小于号，会被浏览器误认为它们是标签�
    <button type="button" onclick="alert('Hello World!')">
        Click Me!
    </button>
+   
    ```
 
 ### 输入类型
@@ -396,6 +402,7 @@ HTML不能使用大于号和小于号，会被浏览器误认为它们是标签�
        <input type="checkbox" name="vehicle" value="Bike">I have a bike.<br>
        <input type="checkbox" name="vehicle" value="Car">I have a car.<br>
    </form>
+   
    ```
 
 4. number`<input type="number">`用于应该包含数值的输入字段，能够对数字做出限制
@@ -407,6 +414,7 @@ HTML不能使用大于号和小于号，会被浏览器误认为它们是标签�
        Birthday:
        <input type="date" name="bday">
    </form>
+   
    ```
 
 6. color用于应该包含颜色的输入字段
@@ -456,3 +464,46 @@ HTML不能使用大于号和小于号，会被浏览器误认为它们是标签�
    - placeholder属性规定用以描述输入字段预期值的提示（样本值或有关格式的简短描述），该提示会在用户输入值显示在输入字段中
    - required属性布尔属性，规定在提交表单之前必须填写输入字段
    - step属性规定input元素的合法数字间隔，eg：如果step=“3”，则合法数字应该是-3、0、0、6等。
+
+## HTML5
+
+文档声明`<!DOCTYPE html>`
+
+文件扩展名：HTML文件.html
+
+​						CSS文件.css
+
+​						JavaScript文件.js
+
+##### Canvas与SVG
+
+SVG是一种使用XML描述2D图形的语言，SVG DOM中的每个元素都是可用的，可以为某个元素附加JavaScript事件处理器。在SVG中，每个被绘制的图形均被视为对象。如果SVG对象的属性发生变化，浏览器能够自动重现图形。
+
+
+
+Canvas通过JavaScript绘制2D，是逐像素进行渲染的。在Canvas中，一旦图形被绘制完成，它就不会继续得到浏览器的关注。如果其位置发生变化，那么整个场景也需要重新绘制，包括任何或许已经被图形覆盖的对象。
+
+
+
+比较：
+
+- SVG
+  - 不依赖分辨率
+  - 支持事件处理器
+  - 最适合带有大型渲染区域的应用程序（比如谷歌地图）
+  - 复杂度高会减慢渲染速度（任何过度使用DOM的应用都不快）
+  - 不适合游戏应用
+- Canvas
+  - 依赖分辨率
+  - 不支持事件处理器
+  - 弱的文本渲染能力
+  - 能够以.png或.jpg格式保存结果图像
+  - 最适合图像密集型的游戏，其中的许多对象会被频繁重绘
+
+### HTML5使用地理定位
+
+使用getCurrentPosition()方法获取用户的位置
+
+watchPosition() 返回用户的当前位置，并且继续返回用户移动时的更新位置（像汽车上的GPS）
+
+clearWatch() 停止watchPosition()方法
