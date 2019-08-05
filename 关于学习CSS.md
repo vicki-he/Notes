@@ -150,7 +150,6 @@ This paragragh will also be center-aligned
    hr {color: sienna;}
    p {margin-left: 20px;}
    body {background-image: url("images/back40.gif");}
-   
    ```
 
 2. 内部样式表：当单个文档需要特殊的样式时，就应该使用内部样式表。你可以使用`<style>`标签在文档头部定义内部样式表：
@@ -163,7 +162,6 @@ This paragragh will also be center-aligned
            body {background-image: url("image/back40.gif");}
        </style>
    </head>
-   
    ```
 
 3. 内联样式：由于要将表现和内容混杂在一起，内联样式会损失掉样式表的许多优势，慎用。
@@ -174,7 +172,6 @@ This paragragh will also be center-aligned
    <p style="color: sienna; margin-left: 20px">
        This is a paragraph
    </p>
-   
    ```
 
 #### 多重样式
@@ -199,7 +196,6 @@ This paragragh will also be center-aligned
   body{
       background-position: center;
   }
-  
   ```
 
   为background-positon属性提供值的方法很多。首先，关键字（最多两个关键字eg：top right）：top/bottom/left/right/center。还可以使用长度值：如100px/5cm等。最后也可以使用百分数值。
@@ -210,7 +206,6 @@ This paragragh will also be center-aligned
 body {
     background-attachment: fixed;
 }
-
 ```
 
 ### 文本
@@ -228,7 +223,6 @@ body {
      <div>
          <p>this is a paragragh</p>
      </div>
-     
      ```
 
    - 属性可以继承：如下标记中段落也会缩进50像素，这是因为这个段落继承了id为inner的div元素的的缩进值
@@ -243,7 +237,6 @@ body {
              <p>this is a paragragh</p>
          </div>
      </div>
-     
      ```
 
 2. 水平对齐，可以使用text-align属性实现。值：left/right/center/`<CENTER>`/justify
@@ -264,7 +257,6 @@ body {
    <p class="tight">
        this is a paragragh. the spaces between words will be decreased.
    </p>
-   
    ```
 
 4. 字母间隔，letter-spacing属性实现。与word-spacing属性的区别在于，字母间隔修改的是字符或者字母之间的间隔。
@@ -289,7 +281,6 @@ body {
    ```css
    h2.stricken {text-decoration: line-through;}
    h2 {text-decoration: underline overline;}
-   
    ```
 
    对于给定的规则，所有class为stricken的h2元素都只有一个贯穿线装饰，而没有下划线和上划线，因为**text-decoration值会替换而不是累积起来**
@@ -322,7 +313,6 @@ body {
   h1 {font-size: 3.75em;}
   h2 {font-size: 2.5em;}
   p {font-size: 0.875em;}
-  
   ```
 
 ### CSS链接
@@ -379,3 +369,53 @@ CSS有三种定位机制：普通流，浮动和绝对定位。
 
 普通流中的元素的位置由元素在（X）HTML中的位置决定。块级框从上到下一个接一个的排列，框之间的垂直距离是由框的垂直外边距计算出来；行内框在一行中水平布置。
 
+由一行形成的水平框称为**行框（Line Box）**
+
+### CSS position属性
+
+通过使用position属性，我们可以选择4中不同类型的定位，这会影响元素框生成的方式。
+
+1. static：元素框正常生成，块级元素生成一个矩形框，作为文档流的一部分，行内元素则会创建一个或多个行框，置于其父元素中。
+2. relative：元素框偏移某个距离。元素仍保持其未定位前的形状，它原本所占的空间仍保留。
+3. absolute：元素框从文档流完全删除，并相对于它的包含块定位。包含块可能是文档中的另一个元素或者是初始包含块，元素原先在正常文档流中所占的空间会关闭，。元素定位后生成一个块级框，而不论原来它在正常流中生成何种类型的框。
+4. fixed：元素框的表现类似于将position设置为absolute，不过其包含块是视窗本身。
+
+##### css定位属性
+
+| 属性           | 描述                                                       |
+| -------------- | ---------------------------------------------------------- |
+| position       | 把元素放置到一个静态的、相对的、绝对的或固定的位置中       |
+| top            | 定义了一个定位元素的上外边距边界与其包含块上边界之间的偏移 |
+| right          | 定义了定位元素右外边距边界与其包含块右边界之间的偏移       |
+| bottom         | 定义了定位元素下外边距边界与其包含块下边界之间的偏移       |
+| left           | 定义了定位元素左外边距边界与其包含块左边界之间的偏移       |
+| overflow       | 设置当元素的内容溢出其区域时发生的事情                     |
+| clip           | 设置元素的形状。元素被剪入这个形状之中，然后显示出来       |
+| vertical-align | 设置元素的垂直对齐方式                                     |
+| z-index        | 设置元素的堆叠顺序                                         |
+
+#### CSS相对定位
+
+relative
+
+相对定位是相对于被定位元素的起点进行移动，在使用相对定位时，无论是否进行移动，元素仍然占据原来的空间。因此，移动元素会导致它覆盖其他框。
+
+#### CSS绝对定位
+
+absolute
+
+绝对定位使元素的位置与文档流无关，因此不占据空间。绝对定位的元素的位置相对于**最近的已定位的祖先元素**，如果元素没有已经定位的祖先元素，那么它的位置相对于**最初的包含块**。因为绝对定位的框与文档流无关，所以它们可以覆盖页面上的其他元素，可以通过设置z-index属性来控制这些框的对方次序。
+
+#### CSS浮动
+
+float属性定义元素在哪个方向浮动。
+
+浮动元素会生成一个块级框，使文本围绕。
+
+浮动的框可以向左或向右移动，知道它的外边缘碰到包含框或另一个浮动框的边框为止。
+
+由于浮动框不再文档的普通流中，所以文档的普通流中的块框表现得就像浮动框不存在一样。
+
+- 行框和清理
+
+  clear属性规定元素的哪一侧不允许其他浮动元素。
